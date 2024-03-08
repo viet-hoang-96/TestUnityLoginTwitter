@@ -4,13 +4,13 @@ namespace Toriki.Settings
 {
     public class TwitterSettings
     {
-        public static readonly string ConsumerKey = "9wOMHhKvovMCjDujbj0kCsYPw";
-        public static readonly string ConsumerSecret = "mvVt0NzfPugYTnkwTUCbikv7hMTSpyJP5eq2oSfS9IGSOKb6S6";
+        public static readonly string ConsumerKey;
+        public static readonly string ConsumerSecret;
 
         static TwitterSettings()
         {
-            ConsumerKey = string.Empty;
-            ConsumerSecret = string.Empty;
+            ConsumerKey = "9wOMHhKvovMCjDujbj0kCsYPw";
+            ConsumerSecret = "mvVt0NzfPugYTnkwTUCbikv7hMTSpyJP5eq2oSfS9IGSOKb6S6";
 
             if (string.IsNullOrEmpty(ConsumerKey))
             {
