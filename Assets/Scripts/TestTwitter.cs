@@ -1,23 +1,21 @@
 using UnityEngine;
-using Toriki;
 
 public class TestTwitter : MonoBehaviour
 {
+    public string consumerKey;
+    public string consumerSecret;
+
+    public TwitterLogin TwitterAPI;
+    
+    private void Awake()
+    {
+        TwitterAPI.Init(consumerKey, consumerSecret);
+    }
+
     public void LoginToTwitter()
     {
-        TwitterAPI.InitWithLogin(
-        (nickname, token, secret) =>
-        {
-            Debug.Log($"login success: nick name {nickname}, token {token}, secret {secret}");
-            // nickname, accesstoken, accesstokensecret is available. 
-            // also TwitterAPI is ready now.
-        },
-        (errorCode, message) =>
-        {
-            // failed to log in to Twitter.
-            Debug.Log($"login error: code: {errorCode} message: {message}");
-        }
-        );
+
+        TwitterAPI.Login();
     }
 
     public void TweetScreenShot()
