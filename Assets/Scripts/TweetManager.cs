@@ -84,7 +84,7 @@ using UnityEngine.Networking;
 
 				if (request.result != UnityWebRequest.Result.ConnectionError)
 				{
-					Debug.Log("Upload complete!");
+					Debug.Log($"Upload complete! {request.downloadHandler.text}");
 					XDocument xDoc = XDocument.Parse(request.downloadHandler.text);
 					var uri = xDoc.Element("data")?.Element("link")?.Value;
 

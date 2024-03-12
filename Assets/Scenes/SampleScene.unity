@@ -467,7 +467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _imgurClientId: 2a1644a21a27e52
-  _defaultMessage: 
+  _defaultMessage: Tweet
 --- !u!114 &519420035
 MonoBehaviour:
   m_ObjectHideFlags: 0
