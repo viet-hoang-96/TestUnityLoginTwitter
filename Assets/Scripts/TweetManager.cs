@@ -1,4 +1,5 @@
 using System;
+using System.Xml.Linq;
 using Cysharp.Threading.Tasks;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -84,8 +85,10 @@ using UnityEngine.Networking;
 				if (request.result != UnityWebRequest.Result.ConnectionError)
 				{
 					Debug.Log("Upload complete!");
-					var response = JsonConvert.DeserializeObject<ImgurResponse>(request.downloadHandler.text);
-					var uri = response.data.link;
+					XDocument xDoc = XDocument.Parse(request.downloadHandler.text);
+					var uri = xDoc.Element("data")?.Element("link")?.Value;
+
+					// Remove Ext
 					uri = uri?.Remove(uri.Length - 4, 4);
 
 #if !UNITY_EDITOR && UNITY_WEBGL
@@ -97,17 +100,5 @@ using UnityEngine.Networking;
 					Debug.Log($"Upload error: {request.error}");
 				}
 			}
-		}
-
-		[Serializable]
-		public class ImgurResponse
-		{
-			public Data data;
-		}
-
-		[Serializable]
-		public class Data
-		{
-			public string link;
 		}
 	}
